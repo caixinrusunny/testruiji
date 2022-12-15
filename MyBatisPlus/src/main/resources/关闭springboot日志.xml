@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--关闭springboot日志-->
+<!--一定是在resource下的logback文件-->
+<configuration>
+
+</configuration>

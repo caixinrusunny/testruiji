@@ -1,0 +1,57 @@
+#数据类型
+#port: 8080--->int类型
+#lessom: springboot--->String类型
+arr: #--->数组
+  - java
+  - ui
+  - 前端
+user:  #--->对象（类）
+  id: 101
+  name: zhangsan
+  subject:
+    - java
+    - 前端
+    - 大数据
+    - ui
+#读取(例子)
+#One
+#@Value("${父层.本身名}}")
+#private String lesson
+#如果是数组，只能一个个元素取@Value("${数组名[下标]}}")
+#原因是@Value只可以取一个值
+#Two
+#用Environment实体类对象封装yml文件的全部配置(spring boot自带的实体类)
+#@Autowired
+#private Environment environment;
+#在方法里面读取：environment.getProperty("父层名.自己名")
+#依旧不可以读一个数组，数组也只能一个元素一个元素读
+#Three
+#用类读取
+#类名与父层同，属性名与配置文件的名同
+#此类可以读取直接读取数组，但是注意该类要有setting方法
+
+# yml文件语法语法规则
+#1.大小写敏感 不忽略大小写大小写所代表的章思是不一样的
+#2属性层级关系使用多行描述 每行结尾使用冒号结束
+#3,使用编进表示层级关系 (一个缩进就是一个tab) 同等级左侧对齐!!!!!!!
+#4,属性值前面添加空格(属性名与属性值之间使用冒号+空格进行分割)
+#5.# 表示注释
+#6.核心规则就是属性值前面添加空格!!!!!!!!!!!!
+#yml文件每层用tab区分，而且每个赋值都要有空格
+
+
+#以下为正文，是有用的配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #数据库连接池
+    #配hmysql数据库驱动 com.mysql.cj.jdbc.Driver是数据库8版本以后的驱动配置
+    #因为高版本兼容低版本所以我们配置了高版本的驱动那么加载数据库8一下的也不会出错
+    #数据是8版本一下可以使用com.mysql.jdbc.Driver 这个驱动 但是低版本不兼容高版本
+    # 如果你写了 这个驱动 你的mysql数据库是8版本及8版本以上的数据库连接的过程中会出现连接异常
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ruiji?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    password: 123456
+    username: root
+server:
+  port: 8080
+#  默认static下的index文件夹会被加载

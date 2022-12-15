@@ -1,0 +1,21 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatisplus_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    password: 123456
+    username: root
+#  main:
+#    banner-mode: off  #关闭springboot的启动图标
+server:
+  port: 8080
+#  默认static下的index文件夹会被加载
+
+mybatis-plus:
+  configuration:
+    #开启mybatisplus日志 (这个日志是输出到控制台)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: off #关闭/开启 mybatisplus在控制台的log
+
